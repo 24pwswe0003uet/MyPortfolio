@@ -180,14 +180,14 @@ export const experience = {
   ],
   conferences: [
     {
-      name: "ICCIIOT 2025",
+      name: "ICCIIOT 2026",
       date: "16/02/2026 – 17/02/2026",
       location: "Peshawar",
       description:
         "Assisted in planning, coordinating, and managing technical conferences, workshops, and university events through collaboration with faculty, organizers, and student volunteers.",
     },
     {
-      name: "ICET 2024",
+      name: "ICET 2025",
       date: "2024",
       location: "Peshawar",
       description:
