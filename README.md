@@ -2,6 +2,10 @@
 
 A professional, animated personal portfolio website built for a Software Engineering undergraduate. Features dark/light theme, particle network background, loading splash animation, circular photo reveal, typewriter effect, and scroll-triggered animations.
 
+## License & Usage
+
+This repository is public for portfolio and demonstration purposes only. The code, design, and content are © Malak Saad Khan and are not open source. Please do not copy, reuse, or redistribute any part of this project without explicit permission. See the [LICENSE](LICENSE) file for details.
+
 ## Tech Stack
 
 - **React** + **Vite**
