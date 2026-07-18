@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-gold: #FBBF24;
+  --color-emerald: #10B981;
+  --color-sky: #38BDF8;
+  --color-accent: #FBBF24;
+  --color-accent-light: #FCD34D;
+  --color-accent-dark: #F59E0B;
+  --color-dark-bg: #09090B;
+  --color-dark-surface: #111113;
+  --color-dark-card: #18181b;
+  --color-dark-border: #27272a;
+  --color-light-bg: #FAFAFA;
+  --color-light-surface: #ffffff;
+  --color-light-card: #ffffff;
+  --color-light-border: #e4e4e7;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  background-color: #FAFAFA;
+  transition: background-color 0.3s;
+}
+
+html.dark body {
+  background-color: #09090B;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+::selection {
+  background-color: #FBBF24;
+  color: #09090B;
+}
+
+/*
+  Fix Tailwind v4 dark mode specificity issue:
+  Tailwind's dark variant uses :where() which has zero specificity,
+  so base utility classes always beat dark: overrides.
+  These !important rules restore correct dark mode behavior.
+*/
+.dark .text-gray-900 { color: #ffffff !important; }
+.dark .text-gray-600 { color: #d1d5db !important; }
+.dark .text-gray-500 { color: #9ca3af !important; }
+.dark .text-gray-300 { color: #e5e7eb !important; }
+.dark .text-gray-400 { color: #9ca3af !important; }
+.dark .bg-white { background-color: #18181b !important; }
+.dark .bg-gray-50 { background-color: #111113 !important; }
+.dark .border-gray-200 { border-color: #27272a !important; }
+.dark .bg-white\/80 { background-color: #09090Bcc !important; }
+.dark .bg-white\/95 { background-color: #09090Bf2 !important; }
+.dark .border-gray-200\/50 { border-color: #27272a80 !important; }
+.dark .border-gray-200\/30 { border-color: #27272a4d !important; }
+.dark .bg-gray-50\/80 { background-color: #111113cc !important; }
+.dark .hover\:bg-gray-100:hover { background-color: rgba(255,255,255,0.05) !important; }
+.dark .hover\:text-gray-900:hover { color: #ffffff !important; }
+.dark .ring-white { --tw-ring-color: #09090B !important; }
+.dark .placeholder-gray-400::placeholder { color: #6b7280 !important; }
