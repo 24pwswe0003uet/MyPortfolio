@@ -73,4 +73,4 @@ public/         — MalakSaadKhan-CV.pdf (replace with your CV), favicon.svg
 
 ## Live Demo
 
-<!-- TODO: Add deployed URL after Firebase deployment -->
+🔗 **https://malaksaadkhan0003.web.app**
