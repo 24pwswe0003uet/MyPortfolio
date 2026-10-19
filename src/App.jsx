@@ -6,13 +6,14 @@ import ProgressBar from "./components/ProgressBar";
 import CursorGlow from "./components/CursorGlow";
 import Hero from "./sections/Hero";
 import About from "./sections/About";
-import Education from "./sections/Education";
 import Skills from "./sections/Skills";
+import Services from "./sections/Services";
 import Projects from "./sections/Projects";
+import Education from "./sections/Education";
 import Experience from "./sections/Experience";
 import Awards from "./sections/Awards";
 import Contact from "./sections/Contact";
-import Footer from './components/Footer';
+import Footer from "./components/Footer";
 
 function AppContent() {
   const [loading, setLoading] = useState(true);
@@ -30,8 +31,9 @@ function AppContent() {
         <Hero />
         <About />
         <Education />
-        <Skills />
+        <Services />
         <Projects />
+        <Skills />
         <Experience />
         <Awards />
         <Contact />

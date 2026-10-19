@@ -1,8 +1,8 @@
-import { motion } from "framer-motion";
 import { contact } from "../data/content";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
-import Reveal from "../components/Reveal";
+import FadeIn from "../components/FadeIn";
+import SectionHeading from "../components/SectionHeading";
 
 export default function Contact() {
   const handleSubmit = (e) => {
@@ -14,113 +14,98 @@ export default function Contact() {
     window.location.href = `mailto:${contact.email}?subject=Portfolio Inquiry from ${name}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
   };
 
+  const infoItems = [
+    { Icon: Mail, value: contact.email, href: `mailto:${contact.email}` },
+    { Icon: Phone, value: contact.phone },
+    { Icon: MapPin, value: contact.location },
+  ];
+
   return (
-    <section id="contact" className="py-20 md:py-28">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Reveal>
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              {contact.heading}
-            </h2>
-            <p className="text-gray-600 dark:text-gray-400">{contact.subheading}</p>
+    <section id="contact" className="px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32">
+      <SectionHeading sub={contact.subheading}>{contact.heading}</SectionHeading>
+
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14">
+        {/* Contact info */}
+        <FadeIn x={-20} y={0} className="space-y-6">
+          {infoItems.map((item, i) => {
+            const content = (
+              <div className="flex items-center gap-4">
+                <div className="icon-circle shrink-0">
+                  <item.Icon size={18} />
+                </div>
+                <span className="text-ink font-light" style={{ fontSize: "clamp(1rem, 1.6vw, 1.15rem)" }}>
+                  {item.value}
+                </span>
+              </div>
+            );
+            return item.href ? (
+              <a key={i} href={item.href} className="block group">
+                <div className="flex items-center gap-4 rounded-2xl p-3 -m-3 transition-all duration-300 group-hover:bg-glass">
+                  {content}
+                </div>
+              </a>
+            ) : (
+              <div key={i}>{content}</div>
+            );
+          })}
+
+          <div className="flex gap-3 pt-4">
+            <a
+              href={contact.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="icon-circle"
+              aria-label="LinkedIn"
+            >
+              <FaLinkedin size={18} />
+            </a>
+            <a
+              href={contact.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="icon-circle"
+              aria-label="GitHub"
+            >
+              <FaGithub size={18} />
+            </a>
+            <a href={`mailto:${contact.email}`} className="icon-circle" aria-label="Email">
+              <Mail size={18} />
+            </a>
           </div>
-        </Reveal>
+        </FadeIn>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {/* Contact info */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="space-y-6"
-          >
-            <div className="flex items-center gap-4">
-              <div className="p-2.5 rounded-lg bg-accent/10 text-accent">
-                <Mail size={18} />
-              </div>
-              <a href={`mailto:${contact.email}`} className="text-sm text-gray-600 dark:text-gray-300 hover:text-accent transition-colors">
-                {contact.email}
-              </a>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="p-2.5 rounded-lg bg-accent/10 text-accent">
-                <Phone size={18} />
-              </div>
-              <span className="text-sm text-gray-600 dark:text-gray-300">{contact.phone}</span>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="p-2.5 rounded-lg bg-accent/10 text-accent">
-                <MapPin size={18} />
-              </div>
-              <span className="text-sm text-gray-600 dark:text-gray-300">{contact.location}</span>
-            </div>
-            <div className="flex gap-3 pt-2">
-              <a
-                href={contact.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2.5 rounded-full border border-gray-200/50 dark:border-dark-border/50 text-gray-500 dark:text-gray-400 hover:text-accent hover:border-accent/50 transition-all"
-                aria-label="LinkedIn"
-              >
-                <FaLinkedin size={18} />
-              </a>
-              <a
-                href={contact.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2.5 rounded-full border border-gray-200/50 dark:border-dark-border/50 text-gray-500 dark:text-gray-400 hover:text-accent hover:border-accent/50 transition-all"
-                aria-label="GitHub"
-              >
-                <FaGithub size={18} />
-              </a>
-              <a
-                href={`mailto:${contact.email}`}
-                className="p-2.5 rounded-full border border-gray-200/50 dark:border-dark-border/50 text-gray-500 dark:text-gray-400 hover:text-accent hover:border-accent/50 transition-all"
-                aria-label="Email"
-              >
-                <Mail size={18} />
-              </a>
-            </div>
-          </motion.div>
-
-          {/* Contact form */}
-          <motion.form
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+        {/* Contact form */}
+        <FadeIn x={20} y={0}>
+          <form
             onSubmit={handleSubmit}
-            className="space-y-4"
+            className="space-y-4 rounded-[32px] border border-line bg-card p-6 sm:p-8 shadow-[0_0_60px_rgba(255,255,255,0.03)]"
           >
             <input
               type="text"
               name="name"
               placeholder="Your Name"
               required
-              className="w-full px-4 py-3 rounded-xl bg-white dark:bg-dark-card border border-gray-200/50 dark:border-dark-border/50 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-accent/50 transition-colors text-sm"
+              className="w-full px-5 py-3.5 rounded-full bg-glass border border-line text-ink placeholder-ink-faint focus:outline-none focus:border-accent/60 transition-colors text-[15px]"
             />
             <input
               type="email"
               name="email"
               placeholder="Your Email"
               required
-              className="w-full px-4 py-3 rounded-xl bg-white dark:bg-dark-card border border-gray-200/50 dark:border-dark-border/50 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-accent/50 transition-colors text-sm"
+              className="w-full px-5 py-3.5 rounded-full bg-glass border border-line text-ink placeholder-ink-faint focus:outline-none focus:border-accent/60 transition-colors text-[15px]"
             />
             <textarea
               name="message"
               placeholder="Your Message"
               required
-              rows={4}
-              className="w-full px-4 py-3 rounded-xl bg-white dark:bg-dark-card border border-gray-200/50 dark:border-dark-border/50 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-accent/50 transition-colors text-sm resize-none"
+              rows={5}
+              className="w-full px-5 py-4 rounded-[24px] bg-glass border border-line text-ink placeholder-ink-faint focus:outline-none focus:border-accent/60 transition-colors text-[15px] resize-none"
             />
-            <button
-              type="submit"
-              className="w-full py-3 rounded-xl bg-accent text-white font-medium text-sm hover:bg-accent-dark transition-colors shadow-lg shadow-accent/25 cursor-pointer"
-            >
-              Send Message
+            <button type="submit" className="btn-primary w-full">
+              Send Message <Send size={16} />
             </button>
-            {/* TODO: connect to a form backend (e.g. Formspree) */}
-          </motion.form>
-        </div>
+          </form>
+        </FadeIn>
       </div>
     </section>
   );

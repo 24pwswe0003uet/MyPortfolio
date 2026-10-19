@@ -13,17 +13,17 @@ export default class ErrorBoundary extends Component {
   render() {
     if (this.state.error) {
       return (
-        <div className="fixed inset-0 z-[999] flex items-center justify-center bg-dark-bg p-8">
+        <div className="fixed inset-0 z-[999] flex items-center justify-center bg-surface p-8">
           <div className="max-w-md text-center">
-            <h1 className="text-2xl font-bold text-red-400 mb-4">Something went wrong</h1>
-            <pre className="text-sm text-gray-400 bg-dark-surface p-4 rounded-lg overflow-auto text-left max-h-64">
+            <h1 className="text-2xl font-bold text-[#EF4444] mb-4">Something went wrong</h1>
+            <pre className="text-sm text-ink-muted bg-card p-4 rounded-[20px] border border-line overflow-auto text-left max-h-64">
               {this.state.error.message}
               {"\n\n"}
               {this.state.error.stack}
             </pre>
             <button
               onClick={() => window.location.reload()}
-              className="mt-6 px-6 py-3 rounded-full bg-accent text-white font-medium text-sm hover:bg-accent-dark transition-colors cursor-pointer"
+              className="btn-primary mt-6"
             >
               Reload Page
             </button>

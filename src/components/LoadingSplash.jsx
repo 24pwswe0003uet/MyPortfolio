@@ -83,7 +83,7 @@ export default function LoadingSplash({ onFinish }) {
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.8 }}
-      className="fixed inset-0 z-[100] bg-dark-bg flex items-center justify-center"
+      className="fixed inset-0 z-[100] bg-surface flex items-center justify-center"
     >
       <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12 px-6 max-w-4xl mx-auto w-full">
         {step >= 0 && (
@@ -91,7 +91,7 @@ export default function LoadingSplash({ onFinish }) {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-            className="shrink-0 w-32 h-40 sm:w-40 sm:h-48 md:w-48 md:h-auto md:self-stretch rounded-2xl overflow-hidden border-2 border-accent/40 shadow-lg shadow-accent/10"
+            className="shrink-0 w-32 h-40 sm:w-40 sm:h-48 md:w-48 md:h-auto md:self-stretch rounded-[20px] overflow-hidden border-2 border-accent/40 shadow-lg shadow-accent/10"
           >
             <img
               src={profilePhoto}
@@ -103,7 +103,7 @@ export default function LoadingSplash({ onFinish }) {
 
         <div className="flex flex-col gap-3 sm:gap-4 md:gap-5 text-center md:text-left md:flex-1 md:min-w-0">
           {step >= 0 && (
-            <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
+            <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-ink">
               <SplashLine
                 text="Hello. Welcome to my portfolio."
                 speed={80}
@@ -113,8 +113,8 @@ export default function LoadingSplash({ onFinish }) {
             </div>
           )}
 
-        {step >= 1 && (
-            <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white">
+          {step >= 1 && (
+            <div className="text-xl sm:text-2xl md:text-3xl font-bold text-ink">
               <SplashLine
                 text="I am Malak Saad Khan"
                 speed={80}
@@ -126,7 +126,7 @@ export default function LoadingSplash({ onFinish }) {
           )}
 
           {step >= 2 && (
-            <div className="text-base sm:text-lg md:text-xl font-semibold text-white/80">
+            <div className="text-base sm:text-lg md:text-xl font-semibold text-ink-muted">
               <SplashLine
                 text="A Software Engineering student at UET Peshawar"
                 speed={80}
@@ -138,7 +138,7 @@ export default function LoadingSplash({ onFinish }) {
           )}
 
           {step >= 3 && (
-            <div className="text-base sm:text-lg md:text-xl font-semibold text-white/80">
+            <div className="text-base sm:text-lg md:text-xl font-semibold text-ink-muted">
               <SplashLine
                 text="Game Developer & Full-Stack Enthusiast"
                 speed={80}

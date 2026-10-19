@@ -6,8 +6,8 @@ import ThemeToggle from "./ThemeToggle";
 const navLinks = [
   { label: "Home", href: "#hero" },
   { label: "About", href: "#about" },
-  { label: "Education", href: "#education" },
   { label: "Skills", href: "#skills" },
+  { label: "Services", href: "#services" },
   { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
   { label: "Contact", href: "#contact" },
@@ -30,13 +30,16 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/80 dark:bg-dark-bg/80 backdrop-blur-xl border-b border-gray-200/50 dark:border-dark-border/50"
+          ? "bg-surface/80 backdrop-blur-xl border-b border-line"
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <a href="#hero" className="text-lg font-bold text-gray-900 dark:text-white tracking-tight">
+          <a
+            href="#hero"
+            className="text-xl font-bold text-ink tracking-tight"
+          >
             M<span className="text-accent">.</span>SK
           </a>
 
@@ -46,7 +49,7 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="px-3 py-2 text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-white/5"
+                className="px-3 py-2 text-[15px] font-medium uppercase tracking-wider text-ink-muted hover:text-ink transition-colors rounded-lg hover:bg-glass"
               >
                 {link.label}
               </a>
@@ -59,7 +62,7 @@ export default function Navbar() {
             <ThemeToggle />
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="p-2 text-gray-400 hover:text-white cursor-pointer"
+              className="p-2 text-ink-muted hover:text-ink cursor-pointer"
               aria-label="Toggle menu"
             >
               {mobileOpen ? <X size={22} /> : <Menu size={22} />}
@@ -75,7 +78,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-t border-gray-200/50 dark:border-dark-border/50 bg-white/95 dark:bg-dark-bg/95 backdrop-blur-xl"
+            className="md:hidden border-t border-line bg-surface/95 backdrop-blur-xl"
           >
             <div className="px-4 py-3 space-y-1">
               {navLinks.map((link) => (
@@ -83,7 +86,7 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="block px-3 py-2 text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-white/5"
+                  className="block px-3 py-2 text-[16px] font-medium uppercase tracking-wider text-ink-muted hover:text-ink transition-colors rounded-lg hover:bg-glass"
                 >
                   {link.label}
                 </a>

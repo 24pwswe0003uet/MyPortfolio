@@ -8,7 +8,7 @@ export default function ThemeToggle() {
     <motion.button
       onClick={toggle}
       whileTap={{ scale: 0.9 }}
-      className="relative p-2 rounded-full bg-dark-surface dark:bg-dark-surface bg-light-surface border border-dark-border dark:border-dark-border border-light-border cursor-pointer"
+      className="relative p-2 rounded-full bg-glass border border-line cursor-pointer"
       aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
     >
       <motion.div
@@ -18,7 +18,11 @@ export default function ThemeToggle() {
         exit={{ rotate: 90, opacity: 0 }}
         transition={{ duration: 0.3 }}
       >
-        {darkMode ? <Moon size={18} className="text-accent" /> : <Sun size={18} className="text-accent" />}
+        {darkMode ? (
+          <Moon size={18} className="text-accent" />
+        ) : (
+          <Sun size={18} className="text-accent" />
+        )}
       </motion.div>
     </motion.button>
   );

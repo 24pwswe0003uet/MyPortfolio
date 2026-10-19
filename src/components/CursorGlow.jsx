@@ -1,10 +1,11 @@
 import { useEffect, useRef } from "react";
 
-function getGradient(isDark) {
-  if (isDark) {
-    return "radial-gradient(circle, rgba(251,191,36,0.30) 0%, rgba(180,120,0,0.10) 45%, transparent 65%)";
-  }
-    return "radial-gradient(circle, rgba(56,189,248,0.35) 0%, rgba(14,165,233,0.15) 45%, transparent 65%)";
+function getGradient() {
+  return "radial-gradient(circle, rgba(168,85,247,0.30) 0%, rgba(168,85,247,0.08) 40%, transparent 65%)";
+}
+
+function getLightGradient() {
+  return "radial-gradient(circle, rgba(168,85,247,0.20) 0%, rgba(168,85,247,0.05) 40%, transparent 65%)";
 }
 
 export default function CursorGlow() {
@@ -35,7 +36,7 @@ export default function CursorGlow() {
       pos.y += (cursor.y - pos.y) * 0.08;
 
       const isDark = document.documentElement.classList.contains("dark");
-      const gradient = getGradient(isDark);
+      const gradient = isDark ? getGradient() : getLightGradient();
       if (el.style.background !== gradient) {
         el.style.background = gradient;
       }
@@ -61,7 +62,7 @@ export default function CursorGlow() {
       ref={elRef}
       className="fixed top-0 left-0 pointer-events-none z-[90] w-[450px] h-[450px] -translate-x-1/2 -translate-y-1/2"
       style={{
-        background: getGradient(true),
+        background: getGradient(),
         willChange: "transform, opacity, background",
       }}
     />
