@@ -17,7 +17,12 @@ import flappyBirdVideo from "../assets/projects/flappy-bird/flappy-bird.mp4";
 export const hero = {
   eyebrow: "Software Engineering Student @ UET Peshawar",
   name: "Malak Saad Khan",
-  roles: ["Flutter Developer", "Game Developer", "Full-Stack Enthusiast", "AI & Software Engineering Student"],
+roles: [
+  "Software Engineering Student",
+  "Flutter Developer",
+  "Unity Game Developer",
+  "Full-Stack Developer",
+],
   intro:
     "Software Engineering student at UET Peshawar building real-world applications across mobile, web, and game development — from client-facing business systems to interactive Unity games. Passionate about clean architecture, scalable systems, and exploring artificial intelligence.",
   cta: [
@@ -33,7 +38,8 @@ export const hero = {
 
 export const about = {
   heading: "About Me",
-  body: "I'm a Software Engineering undergraduate at the University of Engineering and Technology Peshawar, currently maintaining a 4.00/4.00 CGPA. My work spans mobile app development with Flutter, full-stack web systems with PHP/Node.js and MySQL, and game development in Unity with C#. Beyond the classroom, I lead the Software Excellence Society as President, where I organize technical workshops, seminars, and student development programs. I'm especially drawn to building software that solves real business problems — from digitizing a tailoring workflow to managing solar installment plans for real clients.",
+  body:
+    "I enjoy developing practical software that solves real-world problems. My work includes Flutter mobile applications, full-stack business management systems, and Unity games developed with C#. My projects range from a solar installment management system and a tailoring business platform to interactive games. Beyond software development, I serve as President of the Software Excellence Society, where I organize technical workshops, seminars, and student development activities. My goal is to continue improving my engineering skills while building useful, reliable software.",
 };
 
 export const education = [
@@ -178,7 +184,7 @@ export const projects = [
     category: "Game",
     tags: ["Unity", "C#", "Game Development"],
     description:
-      "A survival-style game built in Unity featuring AI-driven enemy behavior, player mechanics, and game systems designed from the ground up.",
+  "Zombie Survival Game is a Unity and C# game development project featuring AI-driven enemy behavior, player movement, and survival gameplay mechanics. The project demonstrates interactive game-system design, enemy behavior programming, and real-time gameplay development.",
     link: "https://www.linkedin.com/posts/malaksaad-khan-44795339a_unity3d-gamedevelopment-ai-activity-7470944735877160960-FP-I",
     badge: "Personal Project",
     inProgress: false,

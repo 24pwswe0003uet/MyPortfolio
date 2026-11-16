@@ -1,40 +1,109 @@
+
+import { motion, useReducedMotion } from "framer-motion";
 import { about } from "../data/content";
 import AnimatedText from "../components/AnimatedText";
 import ContactButton from "../components/ContactButton";
 import SectionHeading from "../components/SectionHeading";
-import FadeIn from "../components/FadeIn";
+
+const focusAreas = [
+  "Flutter",
+  "Unity",
+  "Full-Stack Development",
+];
 
 export default function About() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <section
       id="about"
-      className="relative min-h-screen flex flex-col items-center justify-center px-5 sm:px-8 md:px-10 py-20 gap-10 sm:gap-14 md:gap-16 overflow-hidden"
+      className="relative isolate overflow-hidden px-5 sm:px-8 py-24 sm:py-32"
     >
-      {/* Decorative corner glows */}
-      <FadeIn x={-80} y={0} duration={0.9} className="absolute top-[6%] left-[3%] w-[140px] h-[140px] sm:w-[190px] sm:h-[190px] pointer-events-none">
-        <div className="w-full h-full rounded-full bg-[radial-gradient(circle,rgba(168,85,247,0.14),transparent_70%)] blur-2xl" />
-      </FadeIn>
-      <FadeIn x={-80} y={0} duration={0.9} className="absolute bottom-[10%] left-[8%] w-[100px] h-[100px] sm:w-[150px] sm:h-[150px] pointer-events-none">
-        <div className="w-full h-full rounded-full bg-[radial-gradient(circle,rgba(236,72,153,0.12),transparent_70%)] blur-2xl" />
-      </FadeIn>
-      <FadeIn x={80} y={0} duration={0.9} className="absolute top-[6%] right-[3%] w-[140px] h-[140px] sm:w-[190px] sm:h-[190px] pointer-events-none">
-        <div className="w-full h-full rounded-full bg-[radial-gradient(circle,rgba(34,211,238,0.12),transparent_70%)] blur-2xl" />
-      </FadeIn>
-      <FadeIn x={80} y={0} duration={0.9} className="absolute bottom-[10%] right-[8%] w-[110px] h-[110px] sm:w-[160px] sm:h-[160px] pointer-events-none">
-        <div className="w-full h-full rounded-full bg-[radial-gradient(circle,rgba(168,85,247,0.1),transparent_70%)] blur-2xl" />
-      </FadeIn>
+      {/* Subtle background lighting */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-24 top-12 h-80 w-80 rounded-full bg-accent/10 blur-3xl"
+      />
 
-      <div className="relative z-10 w-full">
-        <SectionHeading>{about.heading}</SectionHeading>
-      </div>
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-accent/10 blur-3xl"
+      />
 
-      <div className="relative z-10 flex flex-col items-center gap-12 sm:gap-16">
-        <AnimatedText
-          text={about.body}
-          className="text-ink font-light text-center leading-relaxed max-w-[640px]"
-          style={{ fontSize: "clamp(1rem, 2vw, 1.35rem)" }}
-        />
-        <ContactButton label="Let's Talk" />
+      <div className="relative z-10 mx-auto max-w-6xl">
+        <SectionHeading>
+          {about.heading}
+        </SectionHeading>
+
+        <motion.div
+          initial={
+            reduceMotion
+              ? false
+              : { opacity: 0, y: 24 }
+          }
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{
+            duration: 0.7,
+            ease: "easeOut",
+          }}
+          className="relative mt-12 overflow-hidden rounded-[2rem] border border-accent/15 bg-surface/80 p-7 shadow-2xl shadow-black/10 backdrop-blur-sm sm:p-10 lg:p-14"
+        >
+          {/* Top accent */}
+          <div className="absolute left-0 top-0 h-1 w-32 rounded-r-full bg-accent" />
+
+          <div className="grid gap-10 lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-12">
+
+            {/* Left information panel */}
+            <div className="flex flex-col justify-between gap-10">
+
+              <div>
+                <p className="mb-5 text-xs font-semibold uppercase tracking-[0.25em] text-accent">
+                  The Person Behind the Code
+                </p>
+
+                <h3 className="text-2xl font-bold leading-tight tracking-tight text-ink sm:text-3xl">
+                  Building with
+                  <span className="block text-accent">
+                    Purpose.
+                  </span>
+                </h3>
+
+                <div className="mt-7 h-[2px] w-14 rounded-full bg-accent/60" />
+              </div>
+
+              {/* Professional specialties */}
+              <div className="flex flex-wrap gap-2">
+                {focusAreas.map((area) => (
+                  <span
+                    key={area}
+                    className="rounded-full border border-accent/20 bg-accent/5 px-3 py-2 text-xs font-medium tracking-wide text-ink-muted"
+                  >
+                    {area}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Right biography panel */}
+            <div className="lg:border-l lg:border-accent/15 lg:pl-12">
+
+              <AnimatedText
+                text={about.body}
+                className="max-w-3xl text-left font-light leading-[1.9] tracking-normal text-ink"
+                style={{
+                  fontSize:
+                    "clamp(1rem, 1.5vw, 1.2rem)",
+                }}
+              />
+
+              <div className="mt-10 border-t border-accent/10 pt-8">
+                <ContactButton label="Let's Talk" />
+              </div>
+
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

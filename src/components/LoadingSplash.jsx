@@ -106,7 +106,7 @@ export default function LoadingSplash({ onFinish }) {
             <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-ink">
               <SplashLine
                 text="Hello. Welcome to my portfolio."
-                speed={80}
+                speed={50}
                 delay={300}
                 onComplete={advance}
               />
@@ -117,7 +117,7 @@ export default function LoadingSplash({ onFinish }) {
             <div className="text-xl sm:text-2xl md:text-3xl font-bold text-ink">
               <SplashLine
                 text="I am Malak Saad Khan"
-                speed={80}
+                speed={50}
                 delay={150}
                 onComplete={advance}
                 accentWords={["Malak Saad Khan"]}
@@ -129,7 +129,7 @@ export default function LoadingSplash({ onFinish }) {
             <div className="text-base sm:text-lg md:text-xl font-semibold text-ink-muted">
               <SplashLine
                 text="A Software Engineering student at UET Peshawar"
-                speed={80}
+                speed={60}
                 delay={150}
                 onComplete={advance}
                 accentWords={["UET Peshawar"]}
@@ -141,7 +141,7 @@ export default function LoadingSplash({ onFinish }) {
             <div className="text-base sm:text-lg md:text-xl font-semibold text-ink-muted">
               <SplashLine
                 text="Game Developer & Full-Stack Enthusiast"
-                speed={80}
+                speed={60}
                 delay={150}
                 onComplete={advance}
                 accentWords={["Full-Stack Enthusiast"]}
@@ -149,7 +149,22 @@ export default function LoadingSplash({ onFinish }) {
             </div>
           )}
         </div>
-      </div>
+            </div>
+
+      {/* Allow visitors to skip the introduction */}
+      <button
+        type="button"
+        onClick={onFinish}
+        className="absolute bottom-6 right-6 z-10
+                   rounded-full border border-accent/30
+                   bg-surface/80 px-5 py-2
+                   text-sm font-medium text-ink-muted
+                   backdrop-blur-sm transition-all
+                   duration-300 hover:border-accent
+                   hover:text-ink"
+      >
+        Skip Intro →
+      </button>
     </motion.div>
   );
 }

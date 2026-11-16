@@ -7,16 +7,25 @@ import profilePhoto from "../assets/profile-photo.png";
 import FadeIn from "../components/FadeIn";
 import Magnet from "../components/Magnet";
 
-function useTypewriter(words, typeSpeed = 80, deleteSpeed = 50, pauseTime = 2000) {
+function useTypewriter(words, enabled = true, typeSpeed = 80, deleteSpeed = 50, pauseTime = 2000) {
   const ref = useRef(null);
   const idxRef = useRef(0);
   const charIdxRef = useRef(0);
   const isDeletingRef = useRef(false);
 
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    let timer;
+useEffect(() => {
+  if (!enabled) return;
+
+  const el = ref.current;
+  if (!el) return;
+
+  // Restart typing when the splash screen finishes
+  idxRef.current = 0;
+  charIdxRef.current = 0;
+  isDeletingRef.current = false;
+  el.textContent = "";
+
+  let timer;
 
     const tick = () => {
       const current = words[idxRef.current];
@@ -43,7 +52,7 @@ function useTypewriter(words, typeSpeed = 80, deleteSpeed = 50, pauseTime = 2000
     };
     timer = setTimeout(tick, 500);
     return () => clearTimeout(timer);
-  }, [words, typeSpeed, deleteSpeed, pauseTime]);
+}, [words, enabled, typeSpeed, deleteSpeed, pauseTime]);
 
   return ref;
 }
@@ -141,8 +150,8 @@ function ParticleNetwork() {
 
 const socialIcons = { Linkedin: FaLinkedin, Github: FaGithub, Email: Mail };
 
-export default function Hero() {
-  const typewriterRef = useTypewriter(hero.roles);
+export default function Hero({ startTyping = true }) {
+  const typewriterRef = useTypewriter(hero.roles, startTyping);
 
   return (
     <section
