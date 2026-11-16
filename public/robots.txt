@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://malaksaadkhan0003.web.app/sitemap.xml
