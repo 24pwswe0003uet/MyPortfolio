@@ -144,6 +144,32 @@ export const services = [
 
 export const projects = [
   {
+    title: "KP Open Farm Atlas",
+    category: "Geospatial Web App",
+    tags: ["JavaScript", "Leaflet", "Geospatial UI", "Data Integration", "Multilingual UI"],
+    description:
+      "A team-built geospatial prototype for the 2026 NASA Space Apps Challenge in Peshawar. The atlas lets visitors explore district-level agricultural and water-balance indicators through interactive maps, time-series views, and open environmental datasets.",
+    role: "Project Foundation, Frontend Development & Integration",
+    contributions: [
+      "Created the initial project foundation: Product Requirements Document (PRD), development tracker, architecture notes, and supporting Markdown documentation.",
+      "Built and refined the user interface and connected its data views to the backend/data pipeline developed by teammate Hamid Naeem.",
+      "Implemented multilingual interface support for English, Urdu, and Pashto.",
+      "Presented the project with the team at City University, Peshawar.",
+    ],
+    teamCredit: "Team project · Backend/data pipeline by Hamid Naeem",
+    achievement: "4th place · Peshawar local event",
+    link: "https://nasaspaceappschallenge-site-livid.vercel.app/",
+    liveUrl: "https://nasaspaceappschallenge-site-livid.vercel.app/",
+    repoUrl: "https://github.com/24pwswe0003uet/NASA_Space_Apps_Challenge",
+    badge: "NASA Space Apps 2026 · Team Project",
+    inProgress: false,
+    images: [
+      "/nasa-atlas/atlas-overview.webp",
+      "/nasa-atlas/atlas-district-detail.webp",
+      "/nasa-atlas/atlas-multilingual.webp",
+    ],
+  },
+  {
     title: "Star Collector",
     category: "Game",
     tags: ["Unity 2D", "C#", "Player Movement", "Collectibles"],
@@ -228,6 +254,17 @@ export const projects = [
 
 export const experiences = [
   {
+    role: "Frontend & Project Foundation — NASA Space Apps Challenge",
+    location: "City University, Peshawar · Team Project",
+    period: "2026",
+    details: [
+      "Established the project structure, wrote the PRD and Markdown technical documentation, and maintained the development tracker.",
+      "Built the frontend and integrated its UI with the data/backend work delivered by teammate Hamid Naeem.",
+      "Implemented English, Urdu, and Pashto interface support for the geospatial atlas.",
+      "Co-presented KP Open Farm Atlas with the team; achieved fourth place at the Peshawar local event.",
+    ],
+  },
+  {
     role: "Software Developer (Client Work)",
     location: "Peshawar, Pakistan",
     period: "2025 – Present",
@@ -290,6 +327,11 @@ export const experience = {
 };
 
 export const awards = [
+  {
+    title: "4th Place — NASA Space Apps Challenge (Peshawar Local Event)",
+    date: "2026",
+    institution: "City University, Peshawar · Team achievement",
+  },
   { title: "Prime Minister Laptop Scheme Recipient", date: "25/02/2026" },
   { title: "Honhaar Scholarship Recipient", date: "2025" },
 ];

@@ -73,7 +73,18 @@ function ProjectCard({ project, index, total, progress }) {
             </div>
           </div>
 
-          {project.link && <LiveProjectButton href={project.link} label="View Project" />}
+          {project.liveUrl || project.repoUrl ? (
+            <div className="flex flex-wrap gap-2 items-center">
+              {project.liveUrl && (
+                <LiveProjectButton href={project.liveUrl} label="Live Demo" />
+              )}
+              {project.repoUrl && (
+                <LiveProjectButton href={project.repoUrl} label="Source Code" />
+              )}
+            </div>
+          ) : (
+            project.link && <LiveProjectButton href={project.link} label="View Project" />
+          )}
         </div>
 
         {/* Tags + description */}
@@ -96,6 +107,35 @@ function ProjectCard({ project, index, total, progress }) {
           </p>
         </div>
 
+        {/* Featured-project contributions */}
+          {project.role && (
+            <div className="rounded-2xl border border-accent/25 bg-accent/5 p-4 sm:p-5 max-w-5xl">
+              <div className="flex flex-wrap justify-between gap-2 items-center mb-2">
+                <span className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+                  My contribution
+                </span>
+                {project.achievement && (
+                  <span className="text-xs font-semibold text-accent">
+                    {project.achievement}
+                  </span>
+                )}
+              </div>
+              <p className="text-sm sm:text-base font-medium text-ink">{project.role}</p>
+              {project.contributions?.length > 0 && (
+                <ul className="grid sm:grid-cols-2 gap-x-5 gap-y-1.5 mt-3">
+                  {project.contributions.map((item) => (
+                    <li key={item} className="flex gap-2 text-xs sm:text-sm text-ink-muted leading-relaxed">
+                      <span aria-hidden="true" className="text-accent shrink-0">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {project.teamCredit && (
+                <p className="text-xs text-ink-faint mt-3">{project.teamCredit}</p>
+              )}
+            </div>
+          )}
         {/* Visuals */}
         {project.video && !(project.images && project.images.length) ? (
           <ProjectVisual
@@ -157,11 +197,11 @@ export default function Projects() {
       ref={containerRef}
       className="px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32"
     >
-      <SectionHeading sub="Personal builds and real client work">Projects</SectionHeading>
+      <SectionHeading sub="Featured engineering projects, client work, and collaborations">Projects</SectionHeading>
 
       <div className="max-w-7xl mx-auto">
         {projects.map((project, index) => (
-          <div key={project.title} className="h-[140vh]">
+          <div key={project.title} className={project.contributions ? "min-h-[195vh] sm:min-h-[175vh] lg:min-h-[155vh]" : "h-[140vh]"}>
             <ProjectCard
               project={project}
               index={index}
