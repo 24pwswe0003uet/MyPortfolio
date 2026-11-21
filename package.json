@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prebuild": "python scripts/sync_cv.py --activate",
+    "cv:generate": "python scripts/sync_cv.py --activate"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
